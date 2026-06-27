@@ -1473,7 +1473,7 @@ using (((visibility = 'public'::text) OR (auth.uid() = owner_id) OR (auth.uid() 
   WHERE (server_members.server_id = servers.id)))));
 
 
-CREATE TRIGGER "send-message-notification" AFTER INSERT ON public.messages FOR EACH ROW EXECUTE FUNCTION supabase_functions.http_request('https://kltykhkcvdwhfjgvevbt.supabase.co/functions/v1/send-message-notification', 'POST', '{"Content-type":"application/json","x-webhooks-secret":"ac3f536fb3bf6808117194b4415e901f34cc98dfac2af9472a458f0e8431d4a9"}', '{}', '5000');
+CREATE TRIGGER "send-message-notification" AFTER INSERT ON public.messages FOR EACH ROW EXECUTE FUNCTION supabase_functions.http_request('https://kltykhkcvdwhfjgvevbt.supabase.co/functions/v1/send-message-notification', 'POST', '{"Content-type":"application/json","x-webhooks-secret":"REDACTED_CONFIGURE_IN_INTERNAL_JOB_SECRETS"}', '{}', '5000');
 
 CREATE TRIGGER set_mls_channel_state_snapshots_updated_at BEFORE UPDATE ON public.mls_channel_state_snapshots FOR EACH ROW EXECUTE FUNCTION public.set_updated_at();
 
