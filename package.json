@@ -2,6 +2,6 @@
   "name": "enclave-messaging-api",
   "private": true,
   "scripts": {
-    "deploy": "supabase functions deploy exchange-account-token livekit-token send-message-notification delete-account-cleanup create-platform-checkout stripe-webhook create-connect-onboarding process-creator-payout create-payment-intent --project-ref kltykhkcvdwhfjgvevbt"
+    "deploy": "supabase functions deploy exchange-account-token livekit-token send-message-notification delete-account-cleanup --project-ref kltykhkcvdwhfjgvevbt"
   }
 }

@@ -1,6 +1,6 @@
 # For detailed configuration reference documentation, visit:
 # https://supabase.com/docs/guides/local-development/cli/config
-project_id = "enclave-social-api"
+project_id = "enclave-messaging-api"
 
 [api]
 enabled = true
@@ -33,29 +33,3 @@ entrypoint = "./functions/send-message-notification/index.ts"
 enabled = true
 verify_jwt = false
 entrypoint = "./functions/delete-account-cleanup/index.ts"
-
-[functions.create-platform-checkout]
-enabled = true
-verify_jwt = true
-entrypoint = "./functions/create-platform-checkout/index.ts"
-
-[functions.stripe-webhook]
-enabled = true
-verify_jwt = false
-entrypoint = "./functions/stripe-webhook/index.ts"
-
-[functions.create-connect-onboarding]
-enabled = true
-verify_jwt = true
-entrypoint = "./functions/create-connect-onboarding/index.ts"
-
-[functions.process-creator-payout]
-enabled = true
-verify_jwt = true
-entrypoint = "./functions/process-creator-payout/index.ts"
-
-[functions.create-payment-intent]
-enabled = true
-verify_jwt = true
-import_map = "./functions/create-payment-intent/deno.json"
-entrypoint = "./functions/create-payment-intent/index.ts"

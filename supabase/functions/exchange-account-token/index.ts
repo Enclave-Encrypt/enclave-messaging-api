@@ -113,7 +113,7 @@ async function verifyAccountAccessToken(
   if (projectRef === SOCIAL_DATA_PROJECT_REF) {
     return {
       error:
-        "Bearer token is a Social JWT, not an Account JWT. Sign out and sign in again through account.enclave.talk.",
+        "Bearer token is a Messaging data JWT, not an Account JWT. Sign out and sign in again through account.enclave.talk.",
     };
   }
 
@@ -186,7 +186,7 @@ Deno.serve(async (req) => {
       return new Response(
         JSON.stringify({
           error:
-            "Server missing ACCOUNT_SUPABASE_ANON_KEY or Social service role configuration",
+            "Server missing ACCOUNT_SUPABASE_ANON_KEY or Messaging service role configuration",
         }),
         {
           status: 500,
@@ -224,7 +224,7 @@ Deno.serve(async (req) => {
 
     if (createError && !createError.message.toLowerCase().includes("already")) {
       return new Response(
-        JSON.stringify({ error: `Social user sync failed: ${createError.message}` }),
+        JSON.stringify({ error: `Messaging user sync failed: ${createError.message}` }),
         {
           status: 500,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -241,7 +241,7 @@ Deno.serve(async (req) => {
     if (linkError || !tokenHash) {
       return new Response(
         JSON.stringify({
-          error: linkError?.message ?? "Failed to create Social session link",
+          error: linkError?.message ?? "Failed to create Messaging session link",
         }),
         {
           status: 500,
@@ -259,7 +259,7 @@ Deno.serve(async (req) => {
     if (sessionError || !accessToken) {
       return new Response(
         JSON.stringify({
-          error: sessionError?.message ?? "Failed to mint Social session",
+          error: sessionError?.message ?? "Failed to mint Messaging session",
         }),
         {
           status: 500,

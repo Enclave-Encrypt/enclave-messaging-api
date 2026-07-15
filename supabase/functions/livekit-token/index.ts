@@ -7,8 +7,6 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
-const DEFAULT_LIVEKIT_URL = "wss://enclave-social-nwgzvm4x.livekit.cloud";
-
 type LiveKitTokenRequest = {
   roomName?: string;
   participantName?: string;
@@ -73,7 +71,12 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: "LiveKit is not configured" }, 503);
     }
 
-    const livekitUrl = Deno.env.get("LIVEKIT_URL") ?? DEFAULT_LIVEKIT_URL;
+    const livekitUrl = Deno.env.get("LIVEKIT_URL")?.trim() ?? "";
+    if (!livekitUrl) {
+      console.error("livekit-token: LIVEKIT_URL is not configured");
+      return jsonResponse({ error: "LiveKit is not configured" }, 503);
+    }
+
     const accessToken = new AccessToken(apiKey, apiSecret, {
       identity: participantIdentity,
       name: participantName,
